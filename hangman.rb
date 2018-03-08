@@ -14,6 +14,7 @@ class Hangman
       take_turn
       break if won?
     end
+    render
     game_over
   end
   private
@@ -41,7 +42,6 @@ class Hangman
     board.join == referee.secret_word
   end
   def game_over
-    render
     puts "game over, guesser " + (won? ? "win!" : "lose!")
     puts "the word is \"#{referee.secret_word}\""
   end
