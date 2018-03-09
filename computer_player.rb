@@ -8,7 +8,7 @@ class ComputerPlayer
     secret_word.size
   end
   def register_secret_length(len)
-    @candidate_words = @dict.select{ |word| word.size == len }
+    @dict.select!{ |word| word.size == len }
   end
   def check_guess(letter)
     word = secret_word.chars
@@ -16,11 +16,11 @@ class ComputerPlayer
   end
   def handle_response(letter, indices)
     @response = [letter, indices]
-    @candidate_words.reject!{ |word| no_match?(word) }
+    @dict.reject!{ |word| no_match?(word) }
   end
   def guess(board)
-    return random_guess if @candidate_words.empty?
-    words = @candidate_words.uniq.join
+    return random_guess if @dict.empty?
+    words = @dict.uniq.join
     board.each{ |letter| words.delete!(letter) if letter }
     result = count_letters(words).sort_by(&:last)
     result.last.first
