@@ -5,7 +5,7 @@ class HumanPlayer
     @secret_word = gets.chomp.downcase
     secret_word.size
   end
-  def register_secret_length(len)
+  def register_secret_length(length)
   end
   def handle_response(letter, indices)
   end
@@ -15,7 +15,7 @@ class HumanPlayer
     return letter if ("a".."z") === letter
   end
   def check_guess(letter)
-    word = secret_word.chars
-    word.each_index.select{ |i| i if word[i] == letter }
+    size = secret_word.size
+    (0...size).select{ |i| i if secret_word[i] == letter }
   end
 end

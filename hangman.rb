@@ -25,9 +25,9 @@ class Hangman
     puts
   end
   def setup
-    len = referee.pick_secret_word
-    guesser.register_secret_length(len)
-    @board = Array.new(len)
+    length = referee.pick_secret_word
+    guesser.register_secret_length(length)
+    @board = Array.new(length)
   end
   def take_turn
     letter = guesser.guess(board)
